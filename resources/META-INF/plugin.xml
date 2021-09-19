@@ -1,0 +1,51 @@
+<idea-plugin>
+  <id>com.tko.androidsearchit</id>
+  <name>Android Search It</name>
+  <version>1.0</version>
+  <vendor email="tushar.kokane15@gmail.com">Tushar Kokane</vendor>
+
+  <description>
+    <![CDATA[
+        <p>The <em>Android Search It</em> plugin provides the capability to search for selected keywords in the Android codebase on popular developer search engines.</p>
+        <h3>Usage:</h3>
+        <ul>
+          <li>Install this plugin.</li>
+          <li>Go to <em>Preferences -> Keymap</em>.</li>
+          <li>Search for <em>Google</em>. Set a shortcut for it, preferably <em>`+G</em>.</li>
+          <li>Search for <em>Stackoverflow</em>. Set a shortcut for it, preferably <em>`+S</em>.</li>
+        </ul>
+        <h3>Note:</h3>
+        <p>This plugin is intended for Android developers using Android Studio. However, it will work with Intellij IDEA as well.</p>
+      ]]>
+  </description>
+
+  <change-notes><![CDATA[
+      Initial release of the plugin.
+    ]]>
+  </change-notes>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <group id="AndroidSearchIt" text="Android Search It" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </group>
+
+    <group>
+      <add-to-group group-id="AndroidSearchIt" anchor="last"/>
+      <action id="SearchGoogle" class="SearchKeyword" text="Google" description="Searches the selected text in Google."/>
+      <action id="SearchStackOverflow" class="SearchKeyword" text="Stackoverflow" description="Searches the selected text in Stackoverflow."/>
+    </group>
+  </actions>
+
+</idea-plugin>
