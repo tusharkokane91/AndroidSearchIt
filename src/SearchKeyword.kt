@@ -1,10 +1,13 @@
 import com.intellij.ide.BrowserUtil
 import com.intellij.notification.NotificationDisplayType
 import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.application.ApplicationInfo
+import com.intellij.openapi.application.impl.ApplicationInfoImpl
 import com.intellij.openapi.editor.Editor
 
 /**
@@ -57,11 +60,18 @@ class SearchKeyword: AnAction() {
      * Note:- Need to update this implementation to be compatible with future versions.
      */
     private fun showErrorNotification(actionEvent: AnActionEvent) {
-        NotificationGroup(Constants.NOTIFICATION_GROUP, NotificationDisplayType.BALLOON, true)
-            .createNotification(Constants.NOTIFICATION_GROUP, "No text is selected. Please select some text to look up.", NotificationType.INFORMATION, null)
+        val content = "No text is selected. Please select some text to look up."
+        NotificationGroupManager.getInstance().getNotificationGroup(Constants.NOTIFICATION_GROUP)
+            .createNotification(content, NotificationType.INFORMATION)
             .notify(actionEvent.project)
     }
 
+    /**
+     * Launch the browser with appropriate search query.
+     *
+     * @param baseUrl for the search engine selected.
+     * @param searchKeyword text selected for search.
+     */
     private fun launchBrowser(baseUrl: String, searchKeyword: String?): Boolean {
         if (searchKeyword.isNullOrEmpty()) return false
 
@@ -69,6 +79,9 @@ class SearchKeyword: AnAction() {
         return true
     }
 
+    /**
+     * @return search keyword string from given [actionEvent].
+     */
     private fun getSearchKeyword(actionEvent: AnActionEvent): String? {
         return getEditor(actionEvent)?.caretModel?.currentCaret?.selectedText
     }

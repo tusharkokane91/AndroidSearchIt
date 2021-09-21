@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.tko.androidsearchit</id>
   <name>Android Search It</name>
-  <version>1.0</version>
+  <version>1.4</version>
   <vendor email="tushar.kokane15@gmail.com">Tushar Kokane</vendor>
 
   <description>
@@ -20,12 +20,15 @@
   </description>
 
   <change-notes><![CDATA[
-      Initial release of the plugin.
+      <ul>
+        <li>Initial release of the plugin.</li>
+        <li>Fixed compatibility issues with specific versions of Intellij IDEA.</li>
+      </ul>
     ]]>
   </change-notes>
 
   <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-  <idea-version since-build="173.0"/>
+  <idea-version since-build="203.0"/>
 
   <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
        on how to target different products -->
@@ -33,6 +36,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
+    <notificationGroup id="Android Search It Notifications" displayType="BALLOON"/>
   </extensions>
 
   <actions>
