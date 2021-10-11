@@ -47,8 +47,9 @@
 
     <group>
       <add-to-group group-id="AndroidSearchIt" anchor="last"/>
-      <action id="SearchGoogle" class="SearchKeyword" text="Google" description="Searches the selected text in Google."/>
-      <action id="SearchStackOverflow" class="SearchKeyword" text="Stackoverflow" description="Searches the selected text in Stackoverflow."/>
+      <action id="SearchGoogle" class="SearchKeyword" text="Google" description="Searches the selected text on Google."/>
+      <action id="SearchStackOverflow" class="SearchKeyword" text="Stackoverflow" description="Searches the selected text on Stackoverflow."/>
+      <action id="Medium" class="SearchKeyword" text="Medium" description="Searches the selected text on Medium."/>
     </group>
   </actions>
 
