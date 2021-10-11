@@ -1,13 +1,9 @@
 import com.intellij.ide.BrowserUtil
-import com.intellij.notification.NotificationDisplayType
-import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.application.ApplicationInfo
-import com.intellij.openapi.application.impl.ApplicationInfoImpl
 import com.intellij.openapi.editor.Editor
 
 /**
@@ -28,6 +24,9 @@ class SearchKeyword: AnAction() {
                 }
                 Constants.STACK_OVERFLOW -> {
                     success = launchBrowser(Constants.STACK_OVERFLOW_LINK, getSearchKeyword(actionEvent))
+                }
+                Constants.MEDIUM -> {
+                    success = launchBrowser(Constants.MEDIUM_LINK, getSearchKeyword(actionEvent))
                 }
             }
 
